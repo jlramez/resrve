@@ -12,6 +12,14 @@
                         <label for="name">Name</label>
                         <input wire:model.live="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="name">Description</label>
+                        <input wire:model.live="description" type="text" class="form-control" id="description" placeholder="Description">@error('description') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Capacity</label>
+                        <input wire:model.live="capacity" type="text" class="form-control" id="capacity" placeholder="Capacity">@error('capacity') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -38,8 +46,12 @@
                         <input wire:model.live="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="guard_name">Guard name(web)</label>
-                        <input wire:model.live="guard_name" type="text" class="form-control" id="guard_name" placeholder="Guard Name">@error('guard_name') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="name">Description</label>
+                        <input wire:model.live="description" type="text" class="form-control" id="description" placeholder="Description">@error('description') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Capacity</label>
+                        <input wire:model.live="capacity" type="text" class="form-control" id="capacity" placeholder="Capacity">@error('capacity') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
