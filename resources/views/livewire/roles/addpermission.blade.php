@@ -10,6 +10,7 @@
             </div>
            <div class="modal-body">
 				<form>
+                    @csrf
             <div class="form-group">
                 <label for="name"></label>
                 <input wire:model.live="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror

@@ -20,6 +20,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth']], function() {
+	Route::get('/evento/{id}', [App\Http\Controllers\EventoController::class, 'index'])
+	->name('evento.index');
+	Route::post('/evento/create', [App\Http\Controllers\EventoController::class, 'store'])
+	->name('evento.store');
+	Route::post('/evento/show/', [App\Http\Controllers\EventoController::class, 'show'])
+	->name('evento.show');
+	Route::post('/evento/edit/{id}', [App\Http\Controllers\EventoController::class, 'edit'])
+	->name('evento.edit');
+	Route::post('/evento/update/{evento}', [App\Http\Controllers\EventoController::class, 'update'])
+	->name('evento.update');
+	Route::post('/evento/delete/{id}', [App\Http\Controllers\EventoController::class, 'destroy'])
+	->name('evento.delete');
+	});
 //Route Hooks - Do not delete//
 Route::view('users/', 'livewire.users.index')->name('users.index')->middleware('auth');
 Route::view('roles/', 'livewire.roles.index')->name('roles.index')->middleware('auth');

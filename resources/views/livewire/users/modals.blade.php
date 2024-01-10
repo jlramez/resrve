@@ -8,6 +8,7 @@
             </div>
            <div class="modal-body">
 				<form>
+                    @csrf
                     <div class="form-group">
                         <label for="name">Nombre</label>
                         <input wire:model.live="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -60,6 +61,7 @@
             </div>
             <div class="modal-body">
                 <form>
+                    @csrf
 					<input type="hidden" wire:model.live="selected_id">
                     <div class="form-group">
                         <label for="name">Nombre</label>

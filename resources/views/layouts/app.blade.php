@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -15,7 +17,13 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    
+    <script>
+        baseURL={!! json_encode(url('/')) !!}
+    </script> 
+     @livewireStyles
 </head>
+  
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -30,6 +38,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     @auth()
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-calendar"></i>  
+                         Calendar
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            @foreach($commonareas as $row)
+                            <div wire:key="{{ $row->id }}">
+                                <a href="{{ url('/evento/'.$row->id) }}" class="dropdown-item">{{$row->name}} </a>
+                            </div>    
+                            @endforeach
+                        </ul>
+                    </div>
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
                                 <a href="{{ url('/users') }}" class="nav-link"><i class="fa-solid fa-users"></i> Users</a> 
@@ -43,8 +63,12 @@
                             <li class="nav-item">
                                 <a href="{{ url('/commonareas') }}" class="nav-link"><i class="fa-solid fa-building"></i> Common areas</a> 
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/reservations') }}" class="nav-link"><i class="fa-solid fa-list-check"></i> Reservations</a> 
+                            </li>
                         </ul>
                     @endauth()
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -88,5 +112,23 @@
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
+    @livewireScripts
+    <script type="module">
+    
+        const addModal = new bootstrap.Modal('#createDataModal');
+        const editModal = new bootstrap.Modal('#updateDataModal');
+        const commentModal = new bootstrap.Modal('#addcommentModal');
+        const addNotModal = new bootstrap.Modal('#addnotificationModal');
+        const evento = new bootstrap.Modal('#evento');
+        window.addEventListener('closeModal', () => {
+           addModal.hide();
+           editModal.hide();
+           commentModal.hide();
+           addNotModal.hide();
+           evento.hide();
+           
+        })
+    </script>
 </body>
 </html>
