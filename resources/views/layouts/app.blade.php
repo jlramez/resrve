@@ -114,13 +114,15 @@
     </div>
     @yield('scripts')
     @livewireScripts
-    <script type="module">
-    
-        const addModal = new bootstrap.Modal('#createDataModal');
-        const editModal = new bootstrap.Modal('#updateDataModal');
-        const commentModal = new bootstrap.Modal('#addcommentModal');
-        const addNotModal = new bootstrap.Modal('#addnotificationModal');
-        const evento = new bootstrap.Modal('#evento');
+    <script type="module">   
+    document.addEventListener('DOMContentLoaded', () => 
+    {
+        var addModal = new bootstrap.Modal('#createDataModal');
+        var editModal = new bootstrap.Modal('#updateDataModal');
+        var commentModal = new bootstrap.Modal('#addcommentModal');
+        var addNotModal = new bootstrap.Modal('#addnotificationModal');
+        var evento = new bootstrap.Modal('#evento');
+        
         window.addEventListener('closeModal', () => {
            addModal.hide();
            editModal.hide();
@@ -129,6 +131,7 @@
            evento.hide();
            
         })
+    });
     </script>
 </body>
 </html>

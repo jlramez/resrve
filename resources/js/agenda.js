@@ -5,7 +5,7 @@ document.addEventListener
           let formulario=document.querySelector("#formularioEventos");
           var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-            locale:'es',
+            locale:'en',
             displayEventTime:false,
             headerToolbar: {
               left: 'prev,next today',
