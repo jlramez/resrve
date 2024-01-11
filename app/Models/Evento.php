@@ -15,13 +15,12 @@ class Evento extends Model
         'descripcion'=> 'required',
         'start' => 'required',
         'end' => 'required',
-        
-  
+        'commonareas_id' => 'required',     
       ];
   
       public $timestamps = true;
   
       protected $table = 'eventos';
   
-      protected $fillable = ['users_id','title','descripcion','start','end'];
+      protected $fillable = ['commonareas_id', 'users_id','title','descripcion','start','end'];
 }

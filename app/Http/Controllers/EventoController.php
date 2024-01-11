@@ -28,6 +28,7 @@ class EventoController extends Controller
         {
             case "admin" :
                 $empleados= User::all();
+                $commonareas=Commonarea::all();
                   break;  
             case "coordinador" :
                 $empleados= User::where('ponencias_id', auth()->user()->ponencias_id)->get();
@@ -42,7 +43,7 @@ class EventoController extends Controller
         }
         $areas=Commonarea::all();
        
-        return view('evento.index',compact('empleados','areas','id'));
+        return view('evento.index',compact('empleados','areas','id','commonareas'));
     }
 
     /**
@@ -121,7 +122,7 @@ class EventoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Evento $evento)
-    {
+    {   
         request()->validate(Evento::$rules);
         $evento->update($request->all());    
         return response()->json($evento);

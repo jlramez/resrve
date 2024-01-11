@@ -130,33 +130,36 @@
             <div class="modal-body">               
                     <form action="" id="formularioEventos">
                         {!! csrf_field() !!}
-                        <div class="form-group d-none">
+                        <div class="form-group">
                           <label for="">Id</label>
                           <input type="text" class="form-control" name="userid" id="userid" aria-describedby="helpId" placeholder="" value={{$id}}>
+                          <label for="">Event id</label>
                           <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
+                          <label for="">Commonareas id</label>
+                          <input type="text" class="form-control"name="commonareas_id" id="commonareas_id" aria-describedby="helpId" placeholder="">
                          <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
                         </div>
                         <div class="form-group">
-                          <label for="">Titulo</label>
-                          <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Escribe el título del evento">
+                          <label for="">Event title</label>
+                          <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Event title">
                           <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
                         </div>
                         <div class="form-group">
-                          <label for="">Descripción del evento</label>
+                          <label for="">Event description</label>
                           <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
                         </div>
-                        <div class="form-group d-none">
+                        <div class="form-group">
                           <label for="">Start</label>
                           <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
                           <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
                         </div>
-                        <div class="form-group d-none">
+                        <div class="form-group">
                           <label for="">End</label>
                           <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
                           <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
                         </div>
-                        <div class="form-group ">
-                          <label for="" >Empleado</label>
+                        <div class="form-group">
+                          <label for="" >User</label>
                                 <select  name="users_id" id="users_id" class="form-control">
                                    <option>--Seleccione el empleado--</option>  
                                    @foreach ($empleados as $row) 
@@ -164,6 +167,15 @@
                                    @endforeach
                               </select> 
                        </div>
+                       <div class="form-group ">
+                        <label for="" >Common area</label>
+                              <select  name="commonareas_id" id="commonareas_id" class="form-control">
+                                 <option>--Choose a common area--</option>  
+                                 @foreach ($commonareas as $row) 
+                                  <option  value="{{ $row->id }}">{{ $row->name }}</option>
+                                 @endforeach
+                            </select> 
+                     </div>
                     </form> 
               
             </div>

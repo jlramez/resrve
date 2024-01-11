@@ -21,6 +21,7 @@ document.addEventListener
                 _token:formulario._token.value,
                 id: formulario.areaid.value,
             }
+          
           },
           dateClick:function(info)
           {
@@ -41,8 +42,9 @@ document.addEventListener
                     formulario.descripcion.value=respuesta.data.descripcion;
                     formulario.start.value=respuesta.data.start;
                     formulario.end.value=respuesta.data.end;
+                    formulario.commonareas_id.value=respuesta.data.commonareas_id;
                     formulario.areas_id.value=respuesta.data.areas_id;
-                    
+                   
                 }
             ).catch(
                 error=>{
