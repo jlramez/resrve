@@ -32,18 +32,20 @@ class EventoController extends Controller
                   break;  
             case "coordinador" :
                 $empleados= User::where('ponencias_id', auth()->user()->ponencias_id)->get();
-                //$empleados= User::all();
+                $commonareas=Commonarea::all();
             break;  
             case "magistrado" :
                 $empleados= User::all();
+                $commonareas=Commonarea::all();
             break;
           default:
                 $empleados= User::where('id', $users_id)->get();
+                $commonareas=Commonarea::all();
                
         }
         $areas=Commonarea::all();
        
-        return view('evento.index',compact('empleados','areas','id','commonareas'));
+        return view('evento.index',compact('empleados','id','commonareas'));
     }
 
     /**
@@ -74,9 +76,9 @@ class EventoController extends Controller
      * @param  \App\Models\Evento  $evento
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,Evento $evento)
+    public function show(Evento $evento)
     {
-        //$evento=Evento::all();
+
         $rol_name = auth()->user()->getRoleNames()->first();
         $users_id=auth()->user()->id;
         switch ($rol_name)
@@ -84,14 +86,17 @@ class EventoController extends Controller
             case "admin" :
                 $evento=Evento::all();
                   break;  
-            case "coordinador" :
+            case "manager" :
                  //$evento=Evento::all();
-                 $evento = DB::Select('SELECT eventos.* FROM `eventos`, users, ponencias 
+                 $evento = DB::Select('SELECT eventos.* FROM `eventos`, users, commonareas 
                  WHERE eventos.users_id=users.id AND users.ponencias_id = ponencias.id AND users.ponencias_id='.auth()->user()->ponencias_id);
-            break;  
-            case "magistrado" :
-                 $evento=Evento::all();
             break;
+            case "user" :
+                //$evento=Evento::all();
+                $evento=DB::Select('SELECT * FROM `eventos`, commonareas, users WHERE eventos.users_id=users.id
+                 AND eventos.commonareas_id=commonareas.id AND eventos.users_id='.$users_id.' AND eventos.commonareas_id=2');
+                //$evento=Evento::where('users_id',$users_id)->get();
+           break;   
           default:
                  $evento=Evento::where('users_id',$users_id)->get();
         }
