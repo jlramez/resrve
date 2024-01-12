@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
@@ -36,7 +36,7 @@
             extraParams: 
             {
                 _token:formulario._token.value,
-                id: formulario.userid.value,
+                id: formulario.caid.value,
             }
           },
           dateClick:function(info)
@@ -57,6 +57,7 @@
                     formulario.descripcion.value=respuesta.data.descripcion;
                     formulario.start.value=respuesta.data.start;
                     formulario.end.value=respuesta.data.end;
+                    formulario.commonareas_id.value=respuesta.data.commonareas_id;
                     formulario.users_id.value=respuesta.data.users_id;
                     $("#evento").modal("show");
                 }
@@ -131,12 +132,8 @@
                     <form action="" id="formularioEventos">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                          <label for="">Id</label>
-                          <input type="text" class="form-control" name="userid" id="userid" aria-describedby="helpId" placeholder="" value={{$id}}>
-                          <label for="">Event id</label>
-                          <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
-                          <label for="">Commonareas id</label>
-                          <input type="text" class="form-control"name="commonareas_id" id="commonareas_id" aria-describedby="helpId" placeholder="">
+                          <label for="">Commonarea Id</label>
+                          <input type="text" class="form-control" name="caid" id="caid" aria-describedby="helpId" placeholder="" value={{$id}}>
                          <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
                         </div>
                         <div class="form-group">
