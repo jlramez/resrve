@@ -76,25 +76,25 @@ class EventoController extends Controller
      * @param  \App\Models\Evento  $evento
      * @return \Illuminate\Http\Response
      */
-    public function show(Evento $evento)
+    public function show(Request $request, Evento $evento)
     {
 
         $rol_name = auth()->user()->getRoleNames()->first();
         $users_id=auth()->user()->id;
+        $commonareas_id=$request->id;
         switch ($rol_name)
         {
             case "admin" :
-                $evento=Evento::all();
+                $evento=Evento::where('commonareas_id', $commonareas_id)->get();
                   break;  
             case "manager" :
                  //$evento=Evento::all();
-                 $evento = DB::Select('SELECT eventos.* FROM `eventos`, users, commonareas 
-                 WHERE eventos.users_id=users.id AND users.ponencias_id = ponencias.id AND users.ponencias_id='.auth()->user()->ponencias_id);
+                 $evento=Evento::all();
             break;
             case "user" :
                 //$evento=Evento::all();
                 $evento=DB::Select('SELECT * FROM `eventos`, commonareas, users WHERE eventos.users_id=users.id
-                 AND eventos.commonareas_id=commonareas.id AND eventos.users_id='.$users_id.' AND eventos.commonareas_id=2');
+                 AND eventos.commonareas_id=commonareas.id AND eventos.users_id='.$users_id.' AND eventos.commonareas_id='.$commonareas_id);
                 //$evento=Evento::where('users_id',$users_id)->get();
            break;   
           default:

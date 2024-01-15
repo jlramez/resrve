@@ -39,5 +39,7 @@ Route::view('users/', 'livewire.users.index')->name('users.index')->middleware('
 Route::view('roles/', 'livewire.roles.index')->name('roles.index')->middleware('auth');
 Route::view('permissions/', 'livewire.permissions.index')->name('permissions.index')->middleware('auth');
 Route::view('commonareas/', 'livewire.commonareas.index')->name('commonareas.index')->middleware('auth');
+Route::view('events/', 'livewire.eventos.index')->name('eventos.index')->middleware('auth');
+Route::view('status/', 'livewire.status.index')->name('status.index')->middleware('auth');
 
 

@@ -4,14 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Commonarea;
-use App\Models\Statu;
-use App\Models\Adminauth;
-class Evento extends Model
+
+class Statu extends Model
 {
     use HasFactory;
-
+    
     static $rules= [
         'users_id' => 'required',
         'title'=> 'required',
@@ -23,9 +20,9 @@ class Evento extends Model
   
       public $timestamps = true;
   
-      protected $table = 'eventos';
+      protected $table = 'status';
   
-      protected $fillable = ['commonareas_id', 'users_id','title','descripcion','start','end'];
+      protected $fillable = ['name', 'description',];
       public function users()
       {
           return $this->hasOne(User::class, 'id', 'users_id');
@@ -34,13 +31,4 @@ class Evento extends Model
       {
           return $this->hasOne(Commonarea::class, 'id', 'commonareas_id');
       }
-      public function status()
-      {
-          return $this->hasOne(Statu::class, 'id', 'status_id');
-      }
-      public function adminauths()
-      {
-          return $this->hasOne(Adminauth::class, 'id', 'adminauths_id');
-      }
 }
-

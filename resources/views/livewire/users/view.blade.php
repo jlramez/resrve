@@ -10,7 +10,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fas fa-users "></i>
-							Listado de usuarios </h4>
+							Users listing </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
@@ -19,7 +19,7 @@
 							<input wire:model.live='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Users">
 						</div>
 						<div class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Nuevo Usuario
+						<i class="fa fa-plus"></i>  Create user
 						</div>
 					</div>
 				</div>
@@ -31,10 +31,10 @@
 						<thead class="thead bg-info">
 							<tr> 
 								<td>#</td> 
-								<th>Nombre</th>
-								<th>Correo electrónico</th>
-								<th>Rol</td>
-								<td>ACCIONES</td>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Role</td>
+								<td>ACTIONS</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -60,8 +60,8 @@
 											Acciones
 										</a>
 										<ul class="dropdown-menu">
-											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete User id {{$row->id}}? \nDeleted Users cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
+											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a></li>
+											<li><a class="dropdown-item" onclick="confirm('Confirm Delete User id {{$row->id}}? \nDeleted Users cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a></li>  
 										</ul>
 									</div>								
 								</td>

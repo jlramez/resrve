@@ -22,11 +22,14 @@
          
           initialView: 'dayGridMonth',
           locale:"en",
-          displayEventTime:false,
+          editable: true,
+          selectable: true,
+          displayEventTime:true,
           headerToolbar: {
             left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,listWeek',
+         
           },
           //events: baseURL+"/evento/show" ,
           eventSources:
@@ -123,7 +126,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
                 <div class="modal-header">
-                        <h5 class="modal-title">Datos del evento</h5>
+                        <h5 class="modal-title">Event information</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             </button>
                             
@@ -131,14 +134,16 @@
             <div class="modal-body">               
                     <form action="" id="formularioEventos">
                         {!! csrf_field() !!}
-                        <div class="form-group">
+                        <div class="form-group d-none">
+                          <label for="">Event Id</label>
+                          <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
                           <label for="">Commonarea Id</label>
                           <input type="text" class="form-control" name="caid" id="caid" aria-describedby="helpId" placeholder="" value={{$id}}>
-                         <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
+                          <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
                         </div>
                         <div class="form-group">
-                          <label for="">Event title</label>
-                          <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Event title">
+                          <label for="">Title</label>
+                          <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Event Title">
                           <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
                         </div>
                         <div class="form-group">
@@ -147,18 +152,18 @@
                         </div>
                         <div class="form-group">
                           <label for="">Start</label>
-                          <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
+                          <input type="datetime-local" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
                           <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
                         </div>
                         <div class="form-group">
                           <label for="">End</label>
-                          <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
+                          <input type="datetime-local" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
                           <!--<small id="helpId" class="form-text text-muted">Help text</small>-->
                         </div>
                         <div class="form-group">
                           <label for="" >User</label>
                                 <select  name="users_id" id="users_id" class="form-control">
-                                   <option>--Seleccione el empleado--</option>  
+                                   <option>--Choose a user--</option>  
                                    @foreach ($empleados as $row) 
                                     <option  value="{{ $row->id }}">{{ $row->name }}</option>
                                    @endforeach
@@ -177,10 +182,10 @@
               
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
-            <button type="button" class="btn btn-warning" id="btnUpdate">Actualizar</button>
-            <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-outline-primary" id="btnGuardar">Save</button>
+            <button type="button" class="btn btn-outline-warning" id="btnUpdate">Update</button>
+            <button type="button" class="btn btn-outline-danger" id="btnEliminar">Delete</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                 
             </div>
         </div>

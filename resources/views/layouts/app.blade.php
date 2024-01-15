@@ -64,7 +64,10 @@
                                 <a href="{{ url('/commonareas') }}" class="nav-link"><i class="fa-solid fa-building"></i> Common areas</a> 
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('/reservations') }}" class="nav-link"><i class="fa-solid fa-list-check"></i> Reservations</a> 
+                                <a href="{{ url('/events') }}" class="nav-link"><i class="fa-solid fa-list-check"></i> Reservations</a> 
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/status') }}" class="nav-link"><i class="fa-solid fa-circle-check"></i> Payment status</a> 
                             </li>
                         </ul>
                     @endauth()
