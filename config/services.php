@@ -30,5 +30,14 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'firebase' => [
+        'apiKey' => 'AIzaSyCacw553QTVyhLHSYhklhI172kJNj6pipo',
+        'authDomain' => 'reserve-e675d.firebaseapp.com',
+        'projectId' => 'reserve-e675d',
+        'storageBucket' => 'reserve-e675d.appspot.com',
+        'messagingSenderId' => '55416675596',
+        'appId' => '1:55416675596:web:fa8bd164918b165c1cfd29',
+        'measurementId' => 'G-C94784129B',
+    ],
 
 ];

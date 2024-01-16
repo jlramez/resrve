@@ -64,7 +64,7 @@ class Users extends Component
             'remember_token' => Str::random(10),
             'created_at' => now(),
             'updated_at' =>  now()
-        ])->assignRole($this->rol_id);
+        ])->assignRole($this->name);
         
         $this->resetInput();
 		$this->dispatch('closeModal');
